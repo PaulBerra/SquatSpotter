@@ -102,6 +102,34 @@ This mode is designed to be run automatically. It reads an existing CSV file, re
     # The domain "example.com" is used for the email subject
     python squatspotter.py example.com --surveillance example.com_list.csv --send-email
     ```
+### 3. Manual 
+
+```
+usage: SquatSpotter.py [-h] [-w WORDLIST] [-o OUTPUT] [-v] [--no-bruteforce] [--no-dns-check] [--surveillance SURVEILLANCE] [--send-email] [domaine]
+
+Outil de génération et de vérification de typosquatting.
+
+positional arguments:
+  domaine               Le domaine cible pour un NOUVEAU scan.
+
+options:
+  -h, --help            show this help message and exit
+  -w WORDLIST, --wordlist WORDLIST
+                        Wordlist de sous-domaines.
+                        (défaut: french.dict)
+  -o OUTPUT, --output OUTPUT
+                        Fichier de sortie CSV pour les résultats.
+  -v, --verbose         Affiche des informations détaillées.
+  --no-bruteforce       Désactive le bruteforce de sous-domaines.
+  --no-dns-check        Désactive la vérification DNS.
+  --surveillance SURVEILLANCE
+                        Lance le mode surveillance sur un fichier CSV existant.
+  --send-email          Active l'envoi d'email en mode surveillance.
+
+```
+
+
+
 
 ---
 
@@ -119,13 +147,13 @@ To automate the monitoring, you can add the script to your crontab.
     -   **Example for a silent daily check at 2:00 AM:**
         ```crontab
         # Run typosquatting surveillance for example.com every day at 2 AM
-        0 2 * * * /usr/bin/python3 /path/to/squatspotter.py example.com --surveillance /path/to/results_example.csv
+        0 2 * * * /usr/bin/python3 /path/to/squatspotter.py example.com --surveillance /path/to/example.com_list.csv
         ```
 
     -   **Example for a daily check with email alerts:**
         ```crontab
         # Run surveillance and send email alerts on changes
-        0 2 * * * /usr/bin/python3 /path/to/squatspotter.py example.com --surveillance /path/to/results_example.csv --send-email
+        0 2 * * * /usr/bin/python3 /path/to/squatspotter.py example.com --surveillance /path/to/example.com_list.csv --send-email
         ```
 
 ---
