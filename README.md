@@ -1,5 +1,8 @@
 # SquatSpotter
 
+<img width="1024" height="1024" alt="SquatSpotterLogo" src="https://github.com/user-attachments/assets/fa1e9e8b-474a-4bf8-878f-bfbb3d6c8ac9" />
+
+
 A command-line tool to generate, detect, and monitor typosquatting domains. It combines multiple generation techniques, performs fast, multi-threaded DNS checks, and includes an automated surveillance mode with email alerts, ideal for execution via cron jobs.
 
 ---
