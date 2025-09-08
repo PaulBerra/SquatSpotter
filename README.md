@@ -30,8 +30,8 @@ A command-line tool to generate, detect, and monitor typosquatting domains. It c
 
 1.  **Clone the project (optional) or download the files** into the same directory.
     ```bash
-    git clone [PROJECT_URL]
-    cd [DIRECTORY_NAME]
+    git clone https://github.com/PaulBerra/SquatSpotter.git
+    cd SquatSpotter
     ```
 
 2.  **Install the dependencies**. Using a virtual environment is highly recommended.
@@ -42,7 +42,7 @@ A command-line tool to generate, detect, and monitor typosquatting domains. It c
     # venv\Scripts\activate    # On Windows
 
     # Install the required libraries
-    pip install tqdm colorama python-dotenv tldextract dnspython
+    pip install -r requirements.txt
     ```
 
 3.  **Create and configure the `.env` file** in the project's root directory for email alerts.
@@ -80,7 +80,7 @@ This is the first step to generate the domain list and create your baseline file
 
 -   **Generate the list without performing DNS checks (very fast):**
     ```bash
-    python squatspotter.py example.com --no-dns-check -o raw_list.csv
+    python squatspotter.py example.com --no-dns-check -o example.com_list.csv
     ```
 
 ### 2. Surveillance Mode (Monitoring for Changes)
@@ -89,18 +89,18 @@ This mode is designed to be run automatically. It reads an existing CSV file, re
 
 -   **Run a silent check (summary only):**
     ```bash
-    python squatspotter.py example.com --surveillance results_example.csv
+    python squatspotter.py example.com --surveillance example.com_list.csv
     ```
 
 -   **Run a check with detailed output of changes:**
     ```bash
-    python squatspotter.py example.com --surveillance results_example.csv -v
+    python squatspotter.py example.com --surveillance example.com_list.csv -v
     ```
 
 -   **Run a check and send an email alert if changes are found:**
     ```bash
     # The domain "example.com" is used for the email subject
-    python squatspotter.py example.com --surveillance results_example.csv --send-email
+    python squatspotter.py example.com --surveillance example.com_list.csv --send-email
     ```
 
 ---
