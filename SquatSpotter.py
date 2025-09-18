@@ -110,12 +110,12 @@ def lancer_surveillance(fichier_csv, domaine_cible, verbose=False, send_email=Fa
         
         for etat_actuel in tqdm(resultats_map, total=len(domaines_a_scanner), desc="Surveillance", unit="domaine"):
             
-            # --- BLOC CORRIGÉ ---
-            # 1. On récupère d'abord le nom du domaine depuis le résultat actuel.
+        
+            # 1. On récupère d'abord le nom du domaine depuis le résultat actual
             domain = etat_actuel["domaine"]
-            # 2. Ensuite, on utilise ce nom pour chercher l'état précédent.
+            # 2. Ensuite, on utilise ce nom pour chercher l'état précédent
             ancien_etat = etat_precedent.get(domain, {})
-            # --- FIN DU BLOC CORRIGÉ ---
+           
 
             if ancien_etat.get('categorie') != etat_actuel['categorie']:
                 msg = f"<strong>{domain}</strong> est passé de <em>{ancien_etat.get('categorie', 'inconnu')}</em> à <em>{etat_actuel['categorie']}</em>"
